@@ -1,1 +1,7 @@
 rootProject.name = 'hippo'
+include 'hippo-admin'
+include 'hippo-api'
+include 'hippo-contract'
+include 'hippo-repository'
+include 'hippo-sdk'
+include 'hippo-node'
