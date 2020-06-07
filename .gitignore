@@ -13,3 +13,6 @@ out/
 /hippo-admin/.gradle
 /hippo-api/.gradle
 **/.gitignore
+hippo-node/node_modules/
+hippo-node/package-lock.json
+hippo-node/src/.umi/
