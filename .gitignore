@@ -16,3 +16,4 @@ out/
 hippo-node/node_modules/
 hippo-node/package-lock.json
 hippo-node/src/.umi/
+hippo-node/yarn.lock
