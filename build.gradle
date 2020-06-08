@@ -45,11 +45,23 @@ subprojects {
 }
 
 project(":hippo-admin") {
-	apply plugin: 'war'
+	jar {
+		archiveBaseName = 'hippo-admin'
+		archiveVersion = '0.1.0'
+		manifest {
+			attributes 'Manifest-Version': 1.0,
+			'Main-Class': 'com.github.aborn.hippo.hippoadmin.HippoAdminApplication'
+		}
+		from {
+			(configurations.runtimeClasspath).collect {
+				it.isDirectory() ? it : zipTree(it)
+			}
+		}
+	}
 
 	dependencies {
+		implementation project(":hippo-repository")
 		implementation 'org.springframework.boot:spring-boot-starter-web'
-		providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 		}
@@ -61,11 +73,24 @@ project(":hippo-admin") {
 }
 
 project(":hippo-api") {
-	apply plugin: 'war'
+	jar {
+		archiveBaseName = 'hippo-api'
+		archiveVersion = '0.1.0'
+		manifest {
+			attributes 'Manifest-Version': 1.0,
+					'Main-Class': 'com.github.aborn.hippo.hippoadmin.HippoAdminApplication'
+		}
+		from {
+			(configurations.runtimeClasspath).collect {
+				it.isDirectory() ? it : zipTree(it)
+			}
+		}
+	}
 
 	dependencies {
+		implementation project(":hippo-contract")
+		implementation project(":hippo-repository")
 		implementation 'org.springframework.boot:spring-boot-starter-web'
-		providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 		}
@@ -77,6 +102,10 @@ project(":hippo-api") {
 }
 
 project(":hippo-contract") {
+	jar {
+		archiveBaseName = 'hippo-contract'
+		archiveVersion = '0.1.0'
+	}
 	dependencies {
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
@@ -101,6 +130,16 @@ project(":hippo-repository") {
 }
 
 project(":hippo-sdk") {
+	jar {
+		archiveBaseName = 'hippo-client'
+		archiveVersion = '0.1.0'
+		enabled = true    // 即可打bootJar包，也可打jar包
+		from {
+			(configurations.runtimeClasspath).collect {
+				it.isDirectory() ? it : zipTree(it)
+			}
+		}
+	}
 	dependencies {
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

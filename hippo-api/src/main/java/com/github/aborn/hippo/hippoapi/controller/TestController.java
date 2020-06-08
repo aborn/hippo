@@ -1,4 +1,4 @@
-package com.github.aborn.hippo.hippoadmin.controller;
+package com.github.aborn.hippo.hippoapi.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,8 +20,8 @@ public class TestController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Map<String,String> map = new HashMap<>();
         map.put("hello", "Hippo");
-        map.put("desc", "这里提供给运营管理后台使用的接口等");
-        map.put("appkey", "hippo-admin");
+        map.put("appkey", "hippo-api");
+        map.put("desc", "这个应用是提供给C端或者SDK接口（包括restapi/rpc）等");
         map.put("timestamp", simpleDateFormat.format(new Date()));
         return map;
     }
