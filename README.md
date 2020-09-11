@@ -9,7 +9,7 @@ hippo-repository 数据操作包，获取数据库的接口，不提供对外使
 hippo-sdk 提供给业务使用的sdk，jar类型  
 
 ### 依赖的第三方
-dubbo rpc 框架 （可选）
+dubbo rpc 框架 （可选）  
 ant-d  
 react  
 
